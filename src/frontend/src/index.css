@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Light mode - not primary use case, but supported */
+    --background: 0.97 0.005 240;
+    --foreground: 0.14 0.005 240;
+    --card: 1 0 0;
+    --card-foreground: 0.14 0.005 240;
+    --popover: 1 0 0;
+    --popover-foreground: 0.14 0.005 240;
+    --primary: 0.78 0.17 170;
+    --primary-foreground: 0.095 0 0;
+    --secondary: 0.93 0.005 240;
+    --secondary-foreground: 0.14 0.005 240;
+    --muted: 0.93 0.005 240;
+    --muted-foreground: 0.55 0.01 240;
+    --accent: 0.78 0.17 170;
+    --accent-foreground: 0.095 0 0;
+    --destructive: 0.63 0.22 27;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.88 0.006 240;
+    --input: 0.88 0.006 240;
+    --ring: 0.78 0.17 170;
+    --chart-1: 0.78 0.17 170;
+    --chart-2: 0.79 0.17 70;
+    --chart-3: 0.65 0.24 302;
+    --chart-4: 0.67 0.24 15;
+    --chart-5: 0.55 0.02 240;
+    --sidebar: 0.94 0.006 240;
+    --sidebar-foreground: 0.14 0.005 240;
+    --sidebar-primary: 0.78 0.17 170;
+    --sidebar-primary-foreground: 0.095 0 0;
+    --sidebar-accent: 0.88 0.008 240;
+    --sidebar-accent-foreground: 0.14 0.005 240;
+    --sidebar-border: 0.88 0.006 240;
+    --sidebar-ring: 0.78 0.17 170;
+    /* Custom tokens */
+    --success: 0.73 0.19 142;
+    --success-foreground: 0.985 0 0;
+    --warning: 0.79 0.17 70;
+    --warning-foreground: 0.14 0 0;
+    --app-bg: 0.97 0.005 240;
+    --card-border-color: 0.88 0.006 240;
+  }
+
+  .dark {
+    /* Dark mode - primary design */
+    --background: 0.095 0 0;
+    --foreground: 0.965 0 0;
+    --card: 0.14 0.005 240;
+    --card-foreground: 0.965 0 0;
+    --popover: 0.14 0.005 240;
+    --popover-foreground: 0.965 0 0;
+    --primary: 0.78 0.17 170;
+    --primary-foreground: 0.095 0 0;
+    --secondary: 0.22 0.008 240;
+    --secondary-foreground: 0.965 0 0;
+    --muted: 0.22 0.008 240;
+    --muted-foreground: 0.68 0.01 240;
+    --accent: 0.22 0.008 240;
+    --accent-foreground: 0.965 0 0;
+    --destructive: 0.63 0.22 27;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.22 0.008 240;
+    --input: 0.22 0.008 240;
+    --ring: 0.78 0.17 170;
+    --chart-1: 0.78 0.17 170;
+    --chart-2: 0.79 0.17 70;
+    --chart-3: 0.65 0.24 302;
+    --chart-4: 0.67 0.24 15;
+    --chart-5: 0.55 0.02 240;
+    --sidebar: 0.12 0.003 240;
+    --sidebar-foreground: 0.965 0 0;
+    --sidebar-primary: 0.78 0.17 170;
+    --sidebar-primary-foreground: 0.095 0 0;
+    --sidebar-accent: 0.22 0.008 240;
+    --sidebar-accent-foreground: 0.965 0 0;
+    --sidebar-border: 0.22 0.008 240;
+    --sidebar-ring: 0.78 0.17 170;
+    /* Custom tokens */
+    --success: 0.73 0.19 142;
+    --success-foreground: 0.985 0 0;
+    --warning: 0.79 0.17 70;
+    --warning-foreground: 0.095 0 0;
+    --app-bg: 0.095 0 0;
+    --card-border-color: 0.22 0.008 240;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .light {
+    color-scheme: light;
+  }
+}
+
+@layer utilities {
+  .demo-mask {
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .card-elevated {
+    @apply bg-card border border-border rounded-xl shadow-card;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--border)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: oklch(var(--border));
+    border-radius: 2px;
+  }
+}
